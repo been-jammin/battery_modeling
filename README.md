@@ -28,7 +28,7 @@ The side reaction we will focus on is called "SEI production" or "SEI thickness"
 ## Parameter sets - Ramadass 2004
 The pybamm package comes with a some pre-loaded parameter sets. These are constants defined by the construction of the Li-ion cell being modeled. These parameter sets are defined by landmark journal papers that made advancements in battery modeling research. One such paper is [Ramadass 2004](https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=1161&context=eche_facpub), and pybamm comes with a preloaded parameter set to match this model. In this parameter set, the growth of SEI film is handled parallel to the paper in the following way...
 
-![](/ramadass equations.jpg)
+![](ramadass_equations.jpg)
 
 Where:  
 J_s is the current density of all side reactions occurring during charging (defined earlier in the paper as a negative quantity, making this the SEI film thickness rate of change positive)  
