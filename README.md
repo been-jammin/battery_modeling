@@ -31,11 +31,11 @@ The pybamm package comes with a some pre-loaded parameter sets. These are consta
 ![](/ramadass equations.jpg)
 
 Where:  
-j_s is the current density of all side reactions occurring during charging (defined earlier in the paper as a negative quantity, making this the SEI film thickness rate of change positive)  
-m_p is the molecular weight of the positive electrode (mol/kg)  
+J_s is the current density of all side reactions occurring during charging (defined earlier in the paper as a negative quantity, making this the SEI film thickness rate of change positive)  
+M_p is the molecular weight of the positive electrode (mol/kg)  
 a_n is the specific surface area of the positive electrode  
-rho_p is the density of active material at the positive electrode  
-and f is Faraday's constant.  
+Rho_p is the density of active material at the positive electrode  
+and F is Faraday's constant.  
 
 So to minimize this rate of change, the only thing we can really work with is j_s. All other quantities are either constant (or modeled to be constant on a single-cycle time scale) or slowly decreasing with age/use of the battery via this and other side reactions. There's nothing we can do about those. To minimize j_s, we have to minimize the side reactions. Which, because we know they are happening all the time no matter what, means we have to limit as much as possible the amount of current applied to the battery during charging. This should be a hint as to why pulsed charging may be better, as in this protocol, the cell spends much of its time with no current applied, and hence having no additional SEI built up. But more on this later.
 
