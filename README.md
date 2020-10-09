@@ -24,8 +24,8 @@ All batteries age. Even secondary rechargeable ones. Aging is an umbrella term t
 ## SEI Production
 The side reaction we will focus on is called "SEI production" or "SEI thickness". SEI stands for "solid-electrolyte interphase". The way that batteries hold energy (electrons) is by Lithium ions grabbing onto them. These Lithium ions are in turn held by the active material of the electrodes (anode and cathode). The Lithium ions move from one side to the other through a chemical called the electrolyte, which is responsible for making sure that the li ions can flow back and forth to be held by the active material. But when the battery is charged, the a small amount of active material on the negative electrode (usually made of graphite) will react with the electrolyte. This reaction creates a film on the graphite structure, hence impeding its ability to hold li ions. This process is irreversible. And while some amount of SEI is expected as the cell is constructed, as it builds up, it decreases the negative electrode's capacity to hold Lithium ions (and hence electrons and charge). Hence, the goal of battery charging research is to find a strategy of charging cells that minimizes the amount of SEI buildup, in order to extend the battery's life.
 
-# SEI production mathematical modeling
-## Parameter sets - Ramadass 2004
+# SEI Production Mathematical Modeling
+## Parameter Sets - Ramadass 2004
 The pybamm package comes with a some pre-loaded parameter sets. These are constants defined by the construction of the Li-ion cell being modeled. These parameter sets are defined by landmark journal papers that made advancements in battery modeling research. One such paper is [Ramadass 2004](https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=1161&context=eche_facpub), and pybamm comes with a preloaded parameter set to match this model. In this parameter set, the growth of SEI film is handled parallel to the paper in the following way...
 
 ![](ramadass_equations.jpg)
@@ -40,10 +40,10 @@ and F is Faraday's constant.
 So to minimize this rate of change, the only thing we can really work with is j_s. All other quantities are either constant (or modeled to be constant on a single-cycle time scale) or slowly decreasing with age/use of the battery via this and other side reactions. There's nothing we can do about those. To minimize j_s, we have to minimize the side reactions. Which, because we know they are happening all the time no matter what, means we have to limit as much as possible the amount of current applied to the battery during charging. This should be a hint as to why pulsed charging may be better, as in this protocol, the cell spends much of its time with no current applied, and hence having no additional SEI built up. But more on this later.
 
 
-## Other parameter sets
+## Other Parameter Sets
 In addition to the Ramadass model, we can define other parameter sets to see how different charging protocols will work on cell constructions with those parameters. Future work on this project will focus on applying charging protocols to different parameter sets
 
-# Implementation approach
+# Implementation Approach
 The baseline will be the industry standard "cc-cv" protocol. With the charging current and voltage being appropriate to the model being used and discussed in the implementation notebook. We will simulate the cell being charged using an aggressive load profile and then recharged using cc-cv, 4x times. When the simulation is complete we will plot a number of signals including current, voltage, discharge capacity, SEI thickness, and Lithium loss. The latter two being our primary indicators of irreversible aging processes. The "results" of these experiments (ie, the quantity determining ranking of protocols) will be charge time (time, hours, from empty to full soc), charge speed (avg ah deposited per hour), SEI production, and SEI production per unit charge speed. Hence, the "best" protocol in our case, will be the protocol that minimizes SEI production while maximizing charge speed. We will experiment with a few different pulsed protocols and compare them to the baseline cc-cv and to each other. 
 
 Continue on to discussion of implementation and code [here](cycle_aging.ipynb)
