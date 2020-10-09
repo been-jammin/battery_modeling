@@ -28,7 +28,7 @@ The side reaction we will focus on is called "SEI production" or "SEI thickness"
 ## Parameter sets - Ramadass 2004
 The pybamm package comes with a some pre-loaded parameter sets. These are constants defined by the construction of the Li-ion cell being modeled. These parameter sets are defined by landmark journal papers that made advancements in battery modeling research. One such paper is [Ramadass 2004](https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=1161&context=eche_facpub), and pybamm comes with a preloaded parameter set to match this model. In this parameter set, the growth of SEI film is handled parallel to the paper in the following way...
 
-![ ]('ramadass equations.jpg')
+![ ](ramadass equations.jpg)
 
 Where:  
 j_s is the current density of all side reactions occurring during charging (defined earlier in the paper as a negative quantity, making this the SEI film thickness rate of change positive)  
@@ -46,7 +46,7 @@ In addition to the Ramadass model, we can define other parameter sets to see how
 # Implementation approach
 The baseline will be the industry standard "cc-cv" protocol. With the charging current and voltage being appropriate to the model being used and discussed in the implementation notebook. We will simulate the cell being charged using an aggressive load profile and then recharged using cc-cv, 4x times. When the simulation is complete we will plot a number of signals including current, voltage, discharge capacity, SEI thickness, and lithium loss. The latter two being our primary indicators of irreversible aging processes. The "results" of these experiments (ie, the quantity determining ranking of protocols) will be charge time (time, hours, from empty to full soc), charge speed (avg ah deposited per hour), SEI production, and SEI production per unit charge speed. Hence, the "best" protocol in our case, will be the protocol that minimizes SEI production while maximizing charge speed. We will experiment with a few different pulsed protocols and compare them to the baseline cc-cv and to each other. 
 
-Continue on to discussion of implementation and code [here]('cycle_aging.ipynb')
+Continue on to discussion of implementation and code [here](cycle_aging.ipynb)
 
 
 
